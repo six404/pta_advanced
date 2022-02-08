@@ -37,7 +37,26 @@ int main()
     return 0;
 }
 
-
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int main(){
+    string s;
+    int maxlen = 1;
+    getline(cin, s);
+    for (int i = 0; i < s.size(); i++) {
+        for (int j = i+1; j < s.size(); j++) {
+            if (s[i] == s[j]) {
+                string s1 = s.substr(i, j-i+1), s2 = s1;
+                reverse(s2.begin(), s2.end());
+                if (s2 == s1 && maxlen < s1.size())maxlen = s1.size();
+            }
+        }
+    }
+    cout << maxlen;
+    return 0;
+}
 
 2.动态规划
 #include <iostream>
